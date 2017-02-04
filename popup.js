@@ -51,7 +51,7 @@ function getCurrentTabUrl(callback) {
 //Execute script after click in popup.html
 function exScript() {
   chrome.tabs.executeScript({
-    file: 'alert.js'
+    file: 'content.js'
   }); 
 }
 
