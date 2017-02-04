@@ -3,11 +3,9 @@
     "name": "joey-fy",
     "description": "The extension uses a thesaurus on every word on a webpage, to help you reach Joey Tribbiani's level of eloquence.",
     "version": "1.0",
-        
-   "browser_action": {
-   "default_icon": "icon.png"},
     
-    "content_scripts": [
+  "background" : {
+    "scripts" : [
         {
             "matches": [
                 "*://*/*"
@@ -17,9 +15,13 @@
             ],
             "run_at": "document_end"
         }
-    ],
-  "permissions": [
-    "activeTab",
-    "https://ajax.googleapis.com/"
-  ]
+    ]
+  },
+  
+  "browser_action": {
+  "default_icon": "icon.png"},
+  
+  "permissions": ["activeTab"]
 }
+        
+  
