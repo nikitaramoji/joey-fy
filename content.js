@@ -1,5 +1,9 @@
 var elements = document.getElementsByTagName('*');
 
+chrome.browserAction.onClicked.addListener(function(tab) {
+   chrome.tabs.executeScript(null, {file: "testScript.js"});
+});
+
 for (var i = 0; i < elements.length; i++) {
     var element = elements[i];
 
