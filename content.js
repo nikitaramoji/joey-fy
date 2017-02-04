@@ -1,7 +1,17 @@
-var elements = document.getElementsByTagName('*');
+for (var i = 0; i < elements.length; i++) {
+    var element = elements[i];
 
-chrome.browserAction.onClicked.addListener(function(tab) {
-   console.log("The button was clicked.");
-});
+    for (var j = 0; j < element.childNodes.length; j++) {
+        var node = element.childNodes[j];
 
+        if (node.nodeType === 3) {
+            var text = node.nodeValue;
+            var replacedText = text.replace(/aortic pump/g, 'aortic pump');
+            replacedText = replacedText.replace(/Aortic pump/g, 'Aortic pump');
 
+            if (replacedText !== text) {
+                element.replaceChild(document.createTextNode(replacedText), node);
+            }
+        }
+    }
+}
