@@ -47,6 +47,16 @@ function getCurrentTabUrl(callback) {
   // alert(url); // Shows "undefined", because chrome.tabs.query is async.
 }
 
+// var app = chrome.runtime.getBackgroundPage();
+//Execute script after click in popup.html
+function exScript() {
+  chrome.tabs.executeScript({
+    file: 'alert.js'
+  }); 
+}
+
+document.getElementById('clickme').addEventListener('click', hello);
+
 /**
  * @param {string} searchTerm - Search term for Google Image search.
  * @param {function(string,number,number)} callback - Called when an image has
