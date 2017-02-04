@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+
+  "name": "joey-fy",
+  "description": "Joey-fy any website with this chrome extension!",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "joey.jpg",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "activeTab",
+    "https://ajax.googleapis.com/"
+  ]
+}
