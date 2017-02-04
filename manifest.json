@@ -1,7 +1,7 @@
 {
 "manifest_version": 2,
-    "name": "[your extension name here]",
-    "description": "[your extension description here]",
+    "name": "joey-fy",
+    "description": "The extension uses a thesaurus on every word on a webpage, to help you reach Joey Tribbiani's level of eloquence.",
     "version": "1.0",
         
    "browser_action": {
