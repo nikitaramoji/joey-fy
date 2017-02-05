@@ -19,6 +19,7 @@ const rp = require ("request-promise");
 // syn.synonymsVerb("time").then((data) => {
 //   console.log(data);
 // });
+
 //Thesaurus service provided by words.bighugelabs.com
 //input word is the word that the program will search for
 function getSynonyms (word) {
@@ -55,8 +56,12 @@ for (var i = 0; i < elements.length; i++) {
 
         if (node.nodeType === 3) {
             var text = node.nodeValue;
-            var replacedText = text.replace(/heart/g, 'aortic pump');
-            replacedText = replacedText.replace(/Heart/g, 'Aortic pump');
+            var res = text.split(" ");
+            var replacedText = text.substring(0,text.length);
+            for(var k = 0; k < res.length; k++) {
+              var syn = getSynonyms(res[k]);
+              replacedText = replacedText.replace(res[k], syn);
+            }
             if (replacedText !== text) {
                 element.replaceChild(document.createTextNode(replacedText), node);
             }
