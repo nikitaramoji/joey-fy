@@ -29,6 +29,7 @@ function getSynonyms (word) {
     var verbs = JSON.parse(data)['verb']['syn'];
     var synonyms = nouns.concat(verbs);
     console.log(synonyms);
+    return synonyms;
   });
 }
 
@@ -43,7 +44,7 @@ function longestWord (synonyms) {
     return synonyms[index];
   }
 
-longesetWord(getSynonyms("time"));
+console.log(getSynonyms("time"));
 
 var elements = document.getElementsByTagName('*');
 

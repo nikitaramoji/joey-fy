@@ -1,0 +1,16 @@
+{
+  "name": "joey-fy-thesaurus",
+  "version": "1.0.0",
+  "description": "The extension uses a thesaurus on every word on a webpage, to help you reach Joey Tribbiani's level of eloquence. When the extension is activated, it will use the longest syonynm it can find per word on the page (leaving words without any synonyms alone).",
+  "main": "bundle.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.79.0",
+    "request-promise": "^4.1.1",
+    "synonymator": "^0.0.1"
+  }
+}
