@@ -1,6 +1,7 @@
 "use strict";
 //const Synonymator = require("synonymator");
-const API_KEY = "9711165e9d159d59f71d4a0c983efe37";
+
+const API_KEY = "b2d9866341889e35dd2256ad22d5e345";
 
 const rp = require ("request-promise");
 
@@ -22,14 +23,16 @@ const rp = require ("request-promise");
 
 //Thesaurus service provided by words.bighugelabs.com
 //input word is the word that the program will search for
-function getSynonyms (word) {
-  rp ("https://words.bighugelabs.com/api/2/9711165e9d159d59f71d4a0c983efe37/" + word + "/json")
+
+function getSynonyms (word, callback) {
+  rp ("https://words.bighugelabs.com/api/2/b2d9866341889e35dd2256ad22d5e345/" + word + "/json")
   .then(function(data){
     var nouns = JSON.parse(data)['noun']['syn'];
     var verbs = JSON.parse(data)['verb']['syn'];
     var synonyms = nouns.concat(verbs);
+    console.log(longestWord(synonyms));
     console.log(synonyms);
-    return synonyms;
+    callback(longestWord(synonyms));
   });
 }
 
@@ -44,8 +47,6 @@ function longestWord (synonyms) {
     return synonyms[index];
   }
 
-console.log(getSynonyms("time"));
-
 var elements = document.getElementsByTagName('*');
 
 for (var i = 0; i < elements.length; i++) {
@@ -59,11 +60,13 @@ for (var i = 0; i < elements.length; i++) {
             var res = text.split(" ");
             var replacedText = text.substring(0,text.length);
             for(var k = 0; k < res.length; k++) {
-              var syn = getSynonyms(res[k]);
-              replacedText = replacedText.replace(res[k], syn);
-            }
-            if (replacedText !== text) {
-                element.replaceChild(document.createTextNode(replacedText), node);
+              console.log(res[k]);
+              var syn = getSynonyms(res[k], function (longestWord){
+                  replacedText = replacedText.replace(res[k], syn);
+                  if (replacedText !== text) {
+                      element.replaceChild(document.createTextNode(replacedText), node);
+                  }
+              });
             }
         }
     }
