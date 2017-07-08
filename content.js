@@ -1,5 +1,6 @@
 "use strict";
 //const Synonymator = require("synonymator");
+
 const API_KEY = "b2d9866341889e35dd2256ad22d5e345";
 
 const rp = require ("request-promise");
@@ -22,6 +23,7 @@ const rp = require ("request-promise");
 
 //Thesaurus service provided by words.bighugelabs.com
 //input word is the word that the program will search for
+
 function getSynonyms (word, callback) {
   rp ("https://words.bighugelabs.com/api/2/b2d9866341889e35dd2256ad22d5e345/" + word + "/json")
   .then(function(data){
@@ -32,7 +34,6 @@ function getSynonyms (word, callback) {
     console.log(synonyms);
     callback(longestWord(synonyms));
   });
-
 }
 
 //longestWord in a list
@@ -45,8 +46,6 @@ function longestWord (synonyms) {
     }
     return synonyms[index];
   }
-
-//console.log(getSynonyms("time"));
 
 var elements = document.getElementsByTagName('*');
 
